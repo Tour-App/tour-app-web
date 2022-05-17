@@ -1,18 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Input(props) {
+const InputStyled = styled.input`
+  &.text-input {
+    border-radius: 8px;
+    border: 3px solid #333333;
+    width: 100%;
+    padding: 12px 14px;
+  }
+`;
+
+function Input({ className, value }) {
   return (
-    <input 
-      className={`${props.className} text-input`} 
+    <InputStyled
+      className={`${className} text-input`} 
       type="text" 
-      value={props.value}
+      value={value}
     />
   )
 }
 
-export default styled(Input)`
-  &.text-input {
-    background-color: ${({ active }) => active ? 'red' : 'white'};
-  }
-`;
+export default Input;
