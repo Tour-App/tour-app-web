@@ -6,6 +6,7 @@ export default {
   component: Input,
   argTypes: {
     value: { control: 'text' },
+    active: { control: 'boolean' }
   },
 }
 
