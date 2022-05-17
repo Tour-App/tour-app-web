@@ -7,15 +7,24 @@ const InputStyled = styled.input`
     border: 3px solid #333333;
     width: 100%;
     padding: 12px 14px;
+    margin-bottom: 16px;
   }
 `;
 
-function Input({ className, value }) {
+function Input({ 
+  className, 
+  value, 
+  onChange, 
+  type,
+  placeholder
+}) {
   return (
     <InputStyled
       className={`${className} text-input`} 
-      type="text" 
+      onChange={onChange}
       value={value}
+      type={type || 'text'}
+      placeholder={placeholder}
     />
   )
 }
