@@ -9,12 +9,20 @@ export default {
     active: { control: 'boolean' },
     className: { control: 'text'}
   },
+  args: {
+    label: 'Da click aquí'
+  },
 }
 
 const Template = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
-Template.args = {
-  label: 'Hola',
-  className:'make-everythin-green'
+Primary.args = {
+  label: 'Primary',
+  filled: true
+}
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: 'Secondary'
 }

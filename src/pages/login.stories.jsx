@@ -7,6 +7,9 @@ export default {
   component: Login,
   parameters: {
     layout: 'fullscreen',
+    // viewport: {
+    //   type: 'mobile'
+    // }
   },
 };
 

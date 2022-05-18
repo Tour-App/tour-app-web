@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
-import Input from '../components/Input';
+import styled from 'styled-components';
 
-function Login() {
+import Input from '../components/Input';
+import Button from '../components/Button';
+import Title from '../components/Texts/Title';
+
+const LoginStyled = styled.section`
+  &.login { 
+    padding: 1rem;
+
+    .login-title {
+      text-align: center;
+      display: block;
+    }
+  }
+`;
+
+function Login({ className }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
-    <section>
+    <LoginStyled className={`${className} login`}>
+      <Title className="login-title">Inicia sesión</Title>
       <Input 
         value={email} 
         onChange={(e) => setEmail(e.target.value)}
@@ -18,7 +34,8 @@ function Login() {
         type="password" 
         placeholder="Ingresa tu password"
       />
-    </section>
+      <Button filled>Iniciar Sesión</Button>
+    </LoginStyled>
   )
 }
 
