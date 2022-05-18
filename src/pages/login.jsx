@@ -13,28 +13,64 @@ const LoginStyled = styled.section`
       text-align: center;
       display: block;
     }
+    .login-password {
+      margin-bottom: 2rem;
+    }
   }
 `;
 
-function Login({ className }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+function Login({ className, loading, onLogin }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
+  const [emailError, setEmailError] = useState(null);
+  const [passwordError, setPasswordError] = useState(null)
+
+  const onLoginHandler = () => {
+    if (!email) {
+      setEmailError('No ingresaste tu email');
+    }
+    if (!password) {
+      setPasswordError('No pusiste password');
+    }
+    onLogin();
+  }
   return (
     <LoginStyled className={`${className} login`}>
       <Title className="login-title">Inicia sesión</Title>
       <Input 
+        disabled={loading}
+        error={emailError}
         value={email} 
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => {
+          if (emailError) {
+            setEmailError(null);
+          }
+          setEmail(e.target.value);
+        }}
         placeholder="Ingresa tu email" 
       />
-      <Input 
+      <Input
+        disabled={loading}
+        error={passwordError}
+        className="login-password"
         value={password} 
-        onChange={(e) => setPassword(e.target.value)} 
+        onChange={(e) => {
+          if (passwordError) {
+            setPasswordError(null);
+          }
+          setPassword(e.target.value);
+        }} 
         type="password" 
         placeholder="Ingresa tu password"
       />
-      <Button filled>Iniciar Sesión</Button>
+      <Button
+        onClick={onLoginHandler} 
+        filled 
+        loading={loading}
+      >
+        Iniciar Sesión
+      </Button>
     </LoginStyled>
   )
 }

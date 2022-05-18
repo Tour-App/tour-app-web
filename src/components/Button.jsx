@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { lighten } from 'polished';
+import { lighten, darken } from 'polished';
 
 const ButtonStyled = styled.button`
   &.button {
@@ -16,16 +16,34 @@ const ButtonStyled = styled.button`
     background: ${({ filled }) => filled ? lighten(0.1 ,'#333333'): 'transparent'};
     border-color: ${lighten(0.1 ,'#333333')};
   }
+
+  &.button:active { 
+    background: ${({ filled }) => filled ? darken(0.5 ,'#333333'): 'transparent'};
+    border-color: ${darken(0.5 ,'#333333')};
+  }
 `;
 
-function Button({ children, label, className, type, filled }) {
+function Button({ 
+  children, 
+  label, 
+  className, 
+  type, 
+  filled, 
+  loading,
+  onClick
+}) {
+  let buttonContent = children || label;
+  if (loading) {
+    buttonContent = 'Loading...';
+  }
   return (
     <ButtonStyled 
       className={`${className} button`}
       type={type}
       filled={filled}
+      onClick={onClick}
     >
-      {children || label}
+      {buttonContent}
     </ButtonStyled>
   )
 }
@@ -46,7 +64,15 @@ Button.propTypes = {
   /**
    * El contenido de children
    */
-  children: PropTypes.string
+  children: PropTypes.string,
+  /**
+   * Estado cuando el botón esta cargando
+   */
+  loading: PropTypes.bool,
+  /**
+   * Función a ejecutar cuando se da click
+   */
+  onClick: PropTypes.func.isRequired
 }
 
 Button.defaultProps = {
@@ -54,6 +80,7 @@ Button.defaultProps = {
   label: '',
   filled: false,
   children: '',
+  loading: false
 }
 
 export default Button;

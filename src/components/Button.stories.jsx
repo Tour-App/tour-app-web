@@ -26,3 +26,14 @@ export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Secondary'
 }
+
+export const PrimaryLoading = Template.bind({});
+PrimaryLoading.args = {
+  loading: true,
+  filled: true
+}
+
+export const SecondaryLoading = Template.bind({});
+SecondaryLoading.args = {
+  loading: true,
+}
