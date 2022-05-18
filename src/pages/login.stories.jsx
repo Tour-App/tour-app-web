@@ -23,7 +23,10 @@ const Template = (args) => {
   }
 
   return (
-    <Login {...args} loading={logging} onLogin={onLogin} />
+    <React.Fragment>
+      <Login {...args} loading={logging} onLogin={onLogin} />
+      <p></p>
+    </React.Fragment>
   )
 };
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
