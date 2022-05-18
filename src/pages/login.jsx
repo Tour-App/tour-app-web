@@ -27,11 +27,14 @@ function Login({ className, loading, onLogin }) {
   const [passwordError, setPasswordError] = useState(null)
 
   const onLoginHandler = () => {
-    if (!email) {
-      setEmailError('No ingresaste tu email');
-    }
-    if (!password) {
-      setPasswordError('No pusiste password');
+    if (!email || !password) {
+      if (!email) {
+        setEmailError('No ingresaste tu email');
+      }
+      if (!password) {
+        setPasswordError('No pusiste password');
+      }
+      return;
     }
     onLogin();
   }

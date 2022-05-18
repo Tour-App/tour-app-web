@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Oval } from  'react-loader-spinner'
 import PropTypes from 'prop-types';
 import { lighten, darken } from 'polished';
 
@@ -11,6 +12,14 @@ const ButtonStyled = styled.button`
     border-radius: 8px;
     border: 4px solid #333333;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
+    .button-spinner { 
+      padding: 0;
+    }
   }
   &.button:hover {
     background: ${({ filled }) => filled ? lighten(0.1 ,'#333333'): 'transparent'};
@@ -34,7 +43,18 @@ function Button({
 }) {
   let buttonContent = children || label;
   if (loading) {
-    buttonContent = 'Loading...';
+    buttonContent = (
+      <Oval
+        className="button-spinner"
+        ariaLabel="loading-indicator"
+        height={16}
+        width={16}
+        strokeWidth={5}
+        strokeWidthSecondary={1}
+        color="white"
+        secondaryColor="white"
+      />
+    );
   }
   return (
     <ButtonStyled 
