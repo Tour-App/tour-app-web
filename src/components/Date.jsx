@@ -22,6 +22,8 @@ const DateStyled = styled.div`
 function Date({ 
   className, 
   value, 
+  min,
+  max,
   onChange,
   placeholder,
   error,
@@ -33,6 +35,8 @@ function Date({
         className='text-input'
         onChange={onChange}
         value={value}
+        min={min}
+        max={max}
         type='date'
         placeholder={placeholder}
         disabled={disabled}
