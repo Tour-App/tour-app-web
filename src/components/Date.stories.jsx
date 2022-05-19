@@ -21,6 +21,6 @@ export default {
 const Template = (args) => <Date {...args} />
 
 export const Start = Template.bind({});
-Template.args = {
+Start.args = {
   value: '2022-05-01'
 }

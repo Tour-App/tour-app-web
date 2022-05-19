@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const DateStyled = styled.div`
@@ -29,17 +29,20 @@ function Date({
   error,
   disabled
 }) {
+  const [valor, setValor] = useState('');
   return (
     <DateStyled error={error} className={`${className} text-input-container`}>
       <input
         className='text-input'
-        onChange={onChange}
-        value={value}
+        value={valor}
         min={min}
         max={max}
         type='date'
         placeholder={placeholder}
         disabled={disabled}
+        onChange={(e) => {
+          setValor(e.target.value);
+        }}
       />
       {error && <p className='text-input-error'>{error}</p>}
     </DateStyled>
