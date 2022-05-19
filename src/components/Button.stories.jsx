@@ -37,3 +37,10 @@ export const SecondaryLoading = Template.bind({});
 SecondaryLoading.args = {
   loading: true,
 }
+
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+  filled: true,
+  label: 'Button',
+};

@@ -30,6 +30,15 @@ const ButtonStyled = styled.button`
     background: ${({ filled }) => filled ? darken(0.5 ,'#333333'): 'transparent'};
     border-color: ${darken(0.5 ,'#333333')};
   }
+
+  &.button.small {
+    border-radius: 35px;
+    min-width: 110px;
+    max-width: 250px;
+    width: auto;
+    padding: 8px;
+  }
+
 `;
 
 function Button({ 
@@ -39,7 +48,8 @@ function Button({
   type, 
   filled, 
   loading,
-  onClick
+  onClick,
+  size
 }) {
   let buttonContent = children || label;
   if (loading) {
@@ -58,7 +68,7 @@ function Button({
   }
   return (
     <ButtonStyled 
-      className={`${className} button`}
+      className={`${className} button ${size === 'small' ? 'small' : ''}`}
       type={type}
       filled={filled}
       onClick={onClick}
@@ -77,6 +87,10 @@ Button.propTypes = {
    * El texto que aparece dentro del botón
    */
   label: PropTypes.string,
+  /**
+   * El tamaño del botón
+   */
+  size: PropTypes.oneOf(['small', 'large']),
   /**
    * El botón tiene background
    */
@@ -100,7 +114,8 @@ Button.defaultProps = {
   label: '',
   filled: false,
   children: '',
-  loading: false
+  loading: false,
+  size: 'large'
 }
 
 export default Button;
