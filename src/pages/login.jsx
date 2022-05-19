@@ -19,7 +19,7 @@ const LoginStyled = styled.section`
   }
 `;
 
-function Login({ className, loading, onLogin }) {
+function Login({ className, loading, onLogin, admin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -36,7 +36,13 @@ function Login({ className, loading, onLogin }) {
       }
       return;
     }
-    onLogin();
+    onLogin({ password, email });
+  }
+
+  if (admin) {
+    return (
+      <p>usuario ingresó</p>
+    )
   }
   return (
     <LoginStyled className={`${className} login`}>
