@@ -6,13 +6,20 @@ export default {
   component: Input,
   argTypes: {
     value: { control: 'text' },
-    active: { control: 'boolean' }
+    active: { control: 'boolean' },
+    hasIcon: { control: 'boolean' }
   },
 }
 
 const Template = (args) => <Input {...args} />
 
 export const Primary = Template.bind({});
-Template.args = {
+Primary.args = {
   value: 'Hola'
+}
+
+export const Search = Template.bind({});
+Search.args = {
+  placeholder: 'Buscar ...',
+  hasIcon: true
 }
